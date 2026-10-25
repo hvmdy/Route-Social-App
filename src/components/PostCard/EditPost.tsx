@@ -1,9 +1,7 @@
-import React, { useContext, useState } from "react";
-import { UserContext, type UserContextType } from "../Context/userContext";
+import React, { useState } from "react";
 import { editPost } from "../../Services/Post.service";
 import { ImageIcon, Send, Smile, X } from "lucide-react";
 import { Spinner } from "@heroui/react";
-import { boolean } from "zod/v4";
 import toast from "react-hot-toast";
 import axios from "axios";
 
