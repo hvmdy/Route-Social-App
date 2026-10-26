@@ -10,13 +10,13 @@ import {
 } from "lucide-react";
 import type { postCardI, TopComment } from "../../types/postCard.types";
 import { Link } from "react-router";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getPostComments } from "../../Services/comments.service";
 import PostComment from "./PostComment";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { AlertDialog, Button, Dropdown, Label } from "@heroui/react";
-import { UserContext, type UserContextType } from "../Context/userContext";
+import { useUserContext } from "../Context/userContext";
 import EditPost from "./EditPost";
 import { deletePost } from "../../Services/Post.service";
 
@@ -32,7 +32,7 @@ export default function Postcard({
   const [showEditPost, setShowEditPost] = useState<boolean>(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState<boolean>(false);
 
-  const { userDetails }: UserContextType = useContext(UserContext);
+  const { userDetails } = useUserContext();
 
   async function getComments(postId: string) {
     try {

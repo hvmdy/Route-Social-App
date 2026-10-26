@@ -11,11 +11,11 @@ import { getMyProfile } from "../../Services/profile.service";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useToken } from "./TokenContext";
-export type UserContextType = {
+type UserContextType = {
   userDetails: userProfileI | null;
   setUserDetails: Dispatch<SetStateAction<userProfileI | null>>;
 };
-export const UserContext = createContext<UserContextType | null>(null);
+const UserContext = createContext<UserContextType | null>(null);
 export default function UserContextProvider({
   children,
 }: {
@@ -51,3 +51,9 @@ export default function UserContextProvider({
     </UserContext.Provider>
   );
 }
+
+export const useUserContext = () => {
+  const ctx = useContext(UserContext);
+  if (!ctx) throw new Error("useToken must be used within TokenProvider");
+  return ctx;
+};

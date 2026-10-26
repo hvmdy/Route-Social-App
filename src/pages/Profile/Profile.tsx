@@ -1,13 +1,10 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Bookmark, ImageIcon, Mail, Sparkles } from "lucide-react";
-import {
-  UserContext,
-  type UserContextType,
-} from "../../components/Context/userContext";
+import { useUserContext } from "../../components/Context/userContext";
 
 function Profile() {
   const [activeTab, setActiveTab] = useState("posts");
-  const { userDetails }: UserContextType = useContext(UserContext);
+  const { userDetails } = useUserContext();
 
   return (
     <>

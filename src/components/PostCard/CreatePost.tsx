@@ -1,10 +1,10 @@
 import { ChevronDown, Globe, ImageIcon, Send, Smile, X } from "lucide-react";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { createPost } from "../../Services/Post.service";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { Spinner } from "@heroui/react";
-import { UserContext, type UserContextType } from "../Context/userContext";
+import { useUserContext } from "../Context/userContext";
 
 export default function CreatePost({
   getAllPosts,
@@ -16,7 +16,7 @@ export default function CreatePost({
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { userDetails }: UserContextType = useContext(UserContext);
+  const { userDetails } = useUserContext();
 
   const formData = new FormData();
 

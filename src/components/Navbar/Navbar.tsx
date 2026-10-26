@@ -7,13 +7,12 @@ import {
   TextAlignJustify,
   User,
 } from "lucide-react";
-import { useContext } from "react";
-import { TokenContext } from "../Context/TokenContext";
+import { useToken } from "../Context/TokenContext";
 import { Link } from "react-router";
-import { UserContext, type UserContextType } from "../Context/userContext";
+import { useUserContext } from "../Context/userContext";
 export default function Navbar() {
-  const { setToken } = useContext(TokenContext)!;
-  const { userDetails }: UserContextType = useContext(UserContext);
+  const { setToken } = useToken();
+  const { userDetails } = useUserContext();
   function logout(): void {
     localStorage.removeItem("userToken");
     setToken(null);
