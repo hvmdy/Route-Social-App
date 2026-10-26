@@ -16,11 +16,11 @@ import { userLogin } from "../../Services/auth.service";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { KeyRound, User } from "lucide-react";
-import { useContext } from "react";
-import { TokenContext } from "../../components/Context/TokenContext";
+import { useToken } from "../../components/Context/TokenContext";
+
 export default function Login() {
   const navigate = useNavigate();
-  const { setToken } = useContext(TokenContext);
+  const { setToken } = useToken();
   const {
     control,
     handleSubmit,

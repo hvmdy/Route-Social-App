@@ -10,7 +10,7 @@ import type { userProfileI } from "../../types/user.type";
 import { getMyProfile } from "../../Services/profile.service";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { TokenContext, type TokenContextType } from "./TokenContext";
+import { useToken } from "./TokenContext";
 export type UserContextType = {
   userDetails: userProfileI | null;
   setUserDetails: Dispatch<SetStateAction<userProfileI | null>>;
@@ -23,7 +23,7 @@ export default function UserContextProvider({
 }) {
   const [userDetails, setUserDetails] = useState<userProfileI | null>(null);
 
-  const { token }: TokenContextType = useContext(TokenContext);
+  const { token } = useToken();
 
   async function getUserProfile() {
     try {
